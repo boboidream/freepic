@@ -1,0 +1,28 @@
+{
+  "name": "free-pic",
+  "version": "1.0.0",
+  "description": "A lightweight tool free to get beautiful pictures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boboidream/freePic.git"
+  },
+  "keywords": [
+    "free",
+    "pictures"
+  ],
+  "author": "boboidream",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boboidream/freePic/issues"
+  },
+  "homepage": "https://github.com/boboidream/freePic#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "jsdom": "^9.5.0",
+    "multicurl": "0.0.8-14"
+  }
+}
