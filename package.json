@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/boboidream/freePic.git"
+    "url": "git+https://github.com/boboidream/freepic.git"
   },
   "keywords": [
     "unsplash",
@@ -18,7 +18,7 @@
   "author": "boboidream",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/boboidream/freePic/issues"
+    "url": "https://github.com/boboidream/freepic/issues"
   },
   "homepage": "http://zwb.io/",
   "dependencies": {

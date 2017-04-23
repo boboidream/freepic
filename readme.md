@@ -76,6 +76,6 @@
 
 ## 最后
 
-如果喜欢这个项目，别忘点 ⭐ 支持一下哦！ [freePic](https://github.com/boboidream/freePic)
+如果喜欢这个项目，别忘点 ⭐ 支持一下哦！ [freePic](https://github.com/boboidream/freepic)
 
-有问题，可以点击反馈：[问题反馈](https://github.com/boboidream/freePic/issues)
+有问题，可以点击反馈：[问题反馈](https://github.com/boboidream/freepic/issues)
