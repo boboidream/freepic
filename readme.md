@@ -1,6 +1,6 @@
 # freepic
 
-![freePic](http://7xsmek.com1.z0.glb.clouddn.com/freepic.gif)
+![freePic](http://7xsmek.com1.z0.glb.clouddn.com/github/freepic.gif)
 
 ## 说明
 [![Support Node of LTS](https://img.shields.io/badge/node-LTS-brightgreen.svg)](https://nodejs.org/)
