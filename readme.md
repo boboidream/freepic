@@ -1,6 +1,4 @@
-# freePic
-
-![freePic](./img/freepic.png)
+# ![freePic](./img/freepic.png)
 
 ## 说明
 
@@ -69,8 +67,9 @@
   ```
 
 ## 感谢
-<a href=""><img src="./img/StockSnap.png" style="height: 50px;border-radius: 10px;border: 1px solid #efefef;" /></a>
-<a href=""><img src="./img/Unsplash.png" style="border: 1px solid #efefef;height: 50px;border-radius: 10px;" /></a>
+
+- [Unsplash](https://unsplash.com)
+- [StockSnap](https://stocksnap.io/)
 
 ## 最后
 
