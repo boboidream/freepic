@@ -2,7 +2,7 @@
 
 ## 说明
 
-快速获取你想要尺寸美图。
+一行命令获取美图。
 
 ## 安装
 1. 依赖 node.js : 如需安装请查看 [Node.js 下载](https://nodejs.org/en/download/)

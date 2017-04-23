@@ -1,6 +1,6 @@
 {
   "name": "freepic",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A lightweight tool to get free beautiful pictures.",
   "bin": {
     "freepic": "bin/freepic.js"
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/boboidream/freePic/issues"
   },
-  "homepage": "https://github.com/boboidream/freePic#readme",
+  "homepage": "http://zwb.io/",
   "dependencies": {
     "commander": "^2.9.0",
     "lodash": "^4.17.4",
