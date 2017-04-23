@@ -9,142 +9,77 @@
  * site: http://zwb.io/
  */
 
-// var https = require("https");
-// var multicurl = require('multicurl');
-// var readline = require('readline');
-// var jsdom = require('jsdom');
-var fs = require("fs")
+const fs = require("fs")
 const path = require('path')
-var request = require('request');
-const argv = require('commander')
+const request = require('request')
 
-
-const Unsplash = require('../lib/source/unsplash')
-const Stocksnap = require('../lib/source/stocksnap')
 const desktop = require('../lib/module/desktop')
-// dev tools
-const Timer = require('../lib/module/timer')
-var timer = new Timer()
-timer.run()
+const choseSrc = require('../lib/module/chose-src')
+const argv = require('../lib/module/command')
+const timer = require('../lib/module/timer')
 
-// init commander
-argv.version('0.0.1')
-    .usage('[options]')
-    .option('-w, --width <lang>', 'picture width')
-    .option('-h, --height <lang>', 'picture height')
-    .option('-a, --about <lang>', 'keyword: nature,water')
-    .option('-o, --original', 'download original picture')
-    .option('-i, --id <lang>', 'download specific picture')
-    .option('-d, --desktop', 'download picture to Desktop')
-    .parse(process.argv)
+timer.run() // Timing starts
 
 class FreePic {
   constructor() {
     this.dir = argv.desktop ? desktop : process.cwd()
     this.name = `freepic-${new Date().getTime()}.jpg`
     this.lucky = [
-      '🌽', '🍅', '🍓', '🍑', '🐯',
-      '🍏', '🍊', '🍭', '🐔' , '🐷']
+      '🌽', '🐬', '🐶', '🐨', '🐯',
+      '⛄', '🐌', '🍭', '🐔' , '🐷']
     this.opts = {
       width: argv.width,
       height: argv.height,
-      about: argv.about,
-      original: argv.original,
-      id: argv.id
+      about: argv.about
     }
   }
 
   go() {
-    let unsplash = new Unsplash(freepic.opts),
-        lucky = this.lucky[Math.round(Math.random()*10)]
+    let lucky = this.lucky[Math.floor(Math.random()*10)],
+        race = choseSrc(this.opts)
 
-    console.log(`downloading your luky picture ${lucky}`)
-    unsplash
-      .getImgURL()
-      .then((url, err) => {
-        console.log(url)
-        // this.name = url.split('?')[0].split('/').pop() + '.jpg'
-        freepic.download(url)
+    console.log(`| mascot ${lucky}`)
+    
+    race.then((res, err) => {
+        console.log(`| original: ${res.original}`)
+        this.download(res.url)
       })
+    race.catch(err => console.log(err))
   }
 
   download(url) {
-    let self = this
+    let self = this,
+        saveto = path.join(self.dir, self.name)
+
     request(url)
       .on('response', (response) => {
+        console.log(`| save to: ${saveto}`)
         timer.end()
       })
-      .pipe(fs.createWriteStream(path.join(self.dir, self.name)))
-      }
+      .pipe(fs.createWriteStream(saveto))
+    }
+  
+  testDown(url) {
+    this.download(url)
+  }
 }
 
 
+// get free picture
 var freepic = new FreePic()
 
-// freepic.go()
+freepic.go()
 
-var stocksnap = new Stocksnap() 
-
-stocksnap.getImgURL().then((url, err) => {
-  console.log(url)
-})
+// 有必要做缓存
+// freepic.testDown('https://images.unsplash.com/photo-1474917299080-1371d7175b62?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=6b0495d1637473ad897fadd75cb91040')
 
 
 
 
 
 
-// progress(request('https://source.unsplash.com/WLUHO9A_xik/1600x900'), {})
-//   .on('progress', (state) => {
-
-//   })
-//   .on('end', () => {
-//     timer.end()
-//   })
-//   .pipe(fs.createWriteStream(`./test/freepic-${new Date().getTime()}.png`))
 
 
-
-  
-
-
-/********************** 资源对象 **********************/
-
-
-// http://jaymantri.com/page/2
-// http://www.lifeofpix.com/
-// http://www.lifeofpix.com/page/2/
-// document.querySelectorAll('.attachment-portfolio-big')
-
-//  var jaymantri = new Promise((resolve, reject) => {
-//    jsdom.env({
-//      url: 'http://jaymantri.com/',
-//      done: function(err, window) {
-//        if (err) {
-//          reject(err)
-//        }
-
-//        let img_class = 'hResPhoto',
-//            url_list = [],
-//            imgs = window.document.getElementsByClassName(img_class)
-
-//        for (let i = 0; i < imgs.length; i++) {
-//          url_list.push(imgs[i].src)
-//        }
-
-//        window.close()
-//        resolve(url_list)
-//      }
-//    })
-//  })
-
-
-
- // url = upsplash._getUrlList(),
-//  var path = './test',
-//      imgPath = `./test/freepic-${new Date().getTime()}.jpg`,
-//      timeBegin,
-//      timeEnd
 
 
 // 创建本地目录
@@ -162,53 +97,8 @@ stocksnap.getImgURL().then((url, err) => {
 //   fs.mkdirSync(path)
 // }
 
-// 进程
-// var promise = upsplash.getUrlList()
-
-// promise.then(function(value) {
-//   timeEnd = Date.now()
-//   console.log('Time end:', timeEnd, 'all:', (timeEnd - timeBegin) / 1000)
-//   console.log(value)
-// }, function(err) {
-//   console.log(err)
-// })
-
-// jaymantri.then(function(value) {
-//   timeEnd = Date.now()
-//   console.log('Time end:', timeEnd, 'all:', (timeEnd - timeBegin) / 1000)
-//   console.log(value)
-// }, function(err) {
-//   console.log(err)
-// })
 
 
 
-// multicurl 下载
-// var download = new multicurl('https://source.unsplash.com/daily', {
-//   connections: 1,
-//   destination: imgPath
-// })
 
-// download.on('progress', function(bytesDown, bytesTotal) {
-//   console.log(bytesDown / 1000, 'of', bytesTotal / 1000, 'k loaded')
-// })
 
-// download.on('done', function() {
-//   timeEnd = Date.now()
-//   console.log('Time end:', timeEnd, 'all:', (timeEnd - timeBegin) / 1000)
-// })
-
-// timeBegin = Date.now()
-// console.log('Time begin:', timeBegin)
-// download.run()
-
-// FreePic
-// class FreePic {
-//   constructor(imgURL) {
-//     this.url = imgURL
-//   }
-//   src: 
-//   download: () => {
-    
-//   }
-// }

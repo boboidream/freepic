@@ -1,5 +1,5 @@
 {
-  "name": "free-pic",
+  "name": "freepic",
   "version": "1.0.0",
   "description": "A lightweight tool to get free beautiful pictures.",
   "bin": {
@@ -10,8 +10,9 @@
     "url": "git+https://github.com/boboidream/freePic.git"
   },
   "keywords": [
-    "free",
-    "pictures"
+    "unsplash",
+    "freepic",
+    "stocksnap"
   ],
   "author": "boboidream",
   "license": "ISC",
@@ -20,15 +21,8 @@
   },
   "homepage": "https://github.com/boboidream/freePic#readme",
   "dependencies": {
-    "cheerio": "^0.22.0",
     "commander": "^2.9.0",
-    "jsdom": "^9.5.0",
     "lodash": "^4.17.4",
-    "multicurl": "0.0.8-14",
-    "node-fetch": "^1.6.3",
-    "progress": "^2.0.0",
-    "request-progress": "^3.0.0",
-    "sqlite3": "^3.1.8",
-    "unsplash-source-es6": "^1.2.1"
+    "request": "^2.81.0"
   }
 }
