@@ -1,7 +1,10 @@
 # freepic
+
 ![freePic](http://7xsmek.com1.z0.glb.clouddn.com/freepic.gif)
 
 ## 说明
+[![Support Node of LTS](https://img.shields.io/badge/node-LTS-brightgreen.svg)](https://nodejs.org/)
+[![npm version](https://img.shields.io/badge/npm-v0.03-orange.svg)](https://www.npmjs.com/package/freepic)
 
 轻松获取美图。
 
