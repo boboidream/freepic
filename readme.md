@@ -1,4 +1,4 @@
-# ![freePic](./img/freepic.png)
+![freePic](./img/freepic.png)
 
 ## 说明
 
