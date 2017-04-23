@@ -1,13 +1,13 @@
-![freePic](./img/freepic.png)
+# freepic
+![freePic](http://7xsmek.com1.z0.glb.clouddn.com/freepic.gif)
 
 ## 说明
 
-一行命令获取美图。
+轻松获取美图。
 
 ## 安装
-1. 依赖 node.js : 如需安装请查看 [Node.js 下载](https://nodejs.org/en/download/)
 
-2. 安装项目
+- 安装项目
 
     ```
     sudo npm install freepic -g
