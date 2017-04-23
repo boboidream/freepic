@@ -19,7 +19,9 @@ var request = require('request');
 const argv = require('commander')
 
 
-var Unsplash = require('../lib/source/unsplash')
+const Unsplash = require('../lib/source/unsplash')
+const Stocksnap = require('../lib/source/stocksnap')
+const desktop = require('../lib/module/desktop')
 // dev tools
 const Timer = require('../lib/module/timer')
 var timer = new Timer()
@@ -33,11 +35,12 @@ argv.version('0.0.1')
     .option('-a, --about <lang>', 'keyword: nature,water')
     .option('-o, --original', 'download original picture')
     .option('-i, --id <lang>', 'download specific picture')
+    .option('-d, --desktop', 'download picture to Desktop')
     .parse(process.argv)
 
 class FreePic {
   constructor() {
-    this.dir = './test'
+    this.dir = argv.desktop ? desktop : process.cwd()
     this.name = `freepic-${new Date().getTime()}.jpg`
     this.lucky = [
       '🌽', '🍅', '🍓', '🍑', '🐯',
@@ -78,7 +81,13 @@ class FreePic {
 
 var freepic = new FreePic()
 
-freepic.go()
+// freepic.go()
+
+var stocksnap = new Stocksnap() 
+
+stocksnap.getImgURL().then((url, err) => {
+  console.log(url)
+})
 
 
 
