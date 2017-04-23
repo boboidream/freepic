@@ -57,6 +57,10 @@ class FreePic {
         timer.end()
       })
       .pipe(fs.createWriteStream(saveto))
+      .on('finish', () => {
+        process.exit()
+      })
+
     }
   
   testDown(url) {
