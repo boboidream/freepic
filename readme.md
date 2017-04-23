@@ -4,7 +4,7 @@
 
 ## 说明
 [![Support Node of LTS](https://img.shields.io/badge/node-LTS-brightgreen.svg)](https://nodejs.org/)
-[![npm version](https://img.shields.io/badge/npm-v0.03-orange.svg)](https://www.npmjs.com/package/freepic)
+[![npm version](https://img.shields.io/badge/npm-v0.04-orange.svg)](https://www.npmjs.com/package/freepic)
 
 轻松获取美图。
 
