@@ -3,7 +3,7 @@
 /*
  * title: free-pic
  * author: boboidream
- * version: 0.0.6
+ * version: 0.0.4
  * date: 2016.09.17
  * updata: 2017.04.22
  * site: http://zwb.io/
@@ -11,7 +11,9 @@
 
 const fs = require("fs")
 const path = require('path')
+const readline = require('readline')
 const request = require('request')
+const imgcat = require('imgcat')
 
 const desktop = require('../lib/module/desktop')
 const choseSrc = require('../lib/module/chose-src')
@@ -42,9 +44,41 @@ class FreePic {
     
     race.then((res, err) => {
         console.log(`| original: ${res.original}`)
-        this.download(res.url)
+        this.dealURL(res)
       })
     race.catch(err => console.log(err))
+  }
+
+  dealURL(res) {
+    if (argv.preview) {
+      let rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      })
+
+      imgcat(res.preview)
+        .then(image => {
+          console.log(image)
+          rl.question('Download it? (y|n)', answer => {
+            console.log('answer:', answer.toLowerCase())
+            if (answer.toLowerCase() === 'y') {
+              this.download(res.url)
+            } else if (answer.toLowerCase() === 'n') {
+              rl.close()
+              process.exit()
+            } else {
+              console.log('| notice: enter y or n')
+            }
+            rl.close()
+          })
+        })
+        .catch(err => {
+          console.log('| notice: preview need iTerm2 version >= 3')
+          this.download(res.url)
+        })
+    } else {
+      this.download(res.url)
+    }
   }
 
   download(url) {
@@ -77,29 +111,6 @@ freepic.go()
 // 有必要做缓存
 // freepic.testDown('https://images.unsplash.com/photo-1474917299080-1371d7175b62?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=6b0495d1637473ad897fadd75cb91040')
 
-
-
-
-
-
-
-
-
-
-// 创建本地目录
-// my_mkdir(path)
-//
-// function my_mkdir(path) {
-//   try {
-//     fs.mkdirSync(path)
-//   } catch(e) {
-//     if (e.code != 'EEXIST') throw e
-//   }
-// }
-
-// if (!fs.existsSync(path)) {
-//   fs.mkdirSync(path)
-// }
 
 
 

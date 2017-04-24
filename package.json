@@ -23,7 +23,9 @@
   "homepage": "http://zwb.io/",
   "dependencies": {
     "commander": "^2.9.0",
+    "imgcat": "^2.3.0",
     "lodash": "^4.17.4",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "term-img": "^1.0.0"
   }
 }
