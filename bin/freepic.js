@@ -19,6 +19,7 @@ const desktop = require('../lib/module/desktop')
 const choseSrc = require('../lib/module/chose-src')
 const argv = require('../lib/module/command')
 const timer = require('../lib/module/timer')
+const feconsole = require('../lib/module/fe-console')
 
 timer.run() // Timing starts
 
@@ -46,31 +47,33 @@ class FreePic {
         console.log(`| original: ${res.original}`)
         this.dealURL(res)
       })
-    race.catch(err => console.log(err))
+    race.catch(err => console.log(`race: ${err}`))
   }
 
   dealURL(res) {
     if (argv.preview) {
-      let rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-      })
+      // let rl = readline.createInterface({
+      //   input: process.stdin,
+      //   output: process.stdout
+      // })
 
       imgcat(res.preview)
         .then(image => {
           console.log(image)
-          rl.question('Download it? (y|n)', answer => {
-            console.log('answer:', answer.toLowerCase())
-            if (answer.toLowerCase() === 'y') {
+          feconsole.log('y): download', 'd): download to Desktop', 'n): exit')
+
+          readline.emitKeypressEvents(process.stdin)
+          process.stdin.setRawMode(true)
+          process.stdin.on('keypress', (str, key) => {
+            if (str.toLowerCase() === 'y') {
               this.download(res.url)
-            } else if (answer.toLowerCase() === 'n') {
-              rl.close()
+            } else if (str.toLowerCase() === 'n') {
               process.exit()
             } else {
-              console.log('| notice: enter y or n')
+              feconsole.log('notice: press key y | d | r | n')
             }
-            rl.close()
           })
+
         })
         .catch(err => {
           console.log('| notice: preview need iTerm2 version >= 3')
