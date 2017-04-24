@@ -50,7 +50,7 @@
     freepic -p
     ```
 
-    ![preview](./img/preview.png)
+    ![preview](http://7xsmek.com1.z0.glb.clouddn.com/github/freepic-preview.jpg)
 
 ## 参数说明
 
@@ -67,10 +67,11 @@
       -h, --height <lang>   picture height
       -a, --about  <lang>   keyword: nature,water
       -d, --desktop         save picture to Desktop
+      -p, --preview         preview picture in iTerm2
 
     Examples:
 
-      $ freepic
+      $ freepic -p
       $ freepic -w 1600 -h 1200 -d
       $ freepic -a nature
   ```

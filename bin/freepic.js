@@ -3,9 +3,9 @@
 /*
  * title: free-pic
  * author: boboidream
- * version: 0.0.4
+ * version: 0.0.5
  * date: 2016.09.17
- * updata: 2017.04.22
+ * updata: 2017.04.24
  * site: http://zwb.io/
  */
 
