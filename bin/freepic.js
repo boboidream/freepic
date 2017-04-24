@@ -35,6 +35,8 @@ class FreePic {
       height: argv.height,
       about: argv.about
     }
+    this.listenFlag = false
+    this.imgInfo = null
   }
 
   go() {
@@ -45,6 +47,7 @@ class FreePic {
     
     race.then((res, err) => {
         console.log(`| original: ${res.original}`)
+        this.imgInfo = res
         this.dealURL(res)
       })
     race.catch(err => console.log(`race: ${err}`))
@@ -52,40 +55,51 @@ class FreePic {
 
   dealURL(res) {
     if (argv.preview) {
-      // let rl = readline.createInterface({
-      //   input: process.stdin,
-      //   output: process.stdout
-      // })
-
       imgcat(res.preview)
         .then(image => {
           console.log(image)
-          feconsole.log('y): download', 'd): download to Desktop', 'n): exit')
+          feconsole.log('y): download',
+                        'd): download to Desktop',
+                        'r): retry to get another picture',
+                        'n): exit')
+          console.log('')
 
-          readline.emitKeypressEvents(process.stdin)
-          process.stdin.setRawMode(true)
-          process.stdin.on('keypress', (str, key) => {
-            if (str.toLowerCase() === 'y') {
-              this.download(res.url)
-            } else if (str.toLowerCase() === 'n') {
-              process.exit()
-            } else {
-              feconsole.log('notice: press key y | d | r | n')
-            }
-          })
-
+          if (!this.listenFlag) this.listenInput() // listen user input once
         })
         .catch(err => {
           console.log('| notice: preview need iTerm2 version >= 3')
-          this.download(res.url)
+          this.download()
         })
     } else {
-      this.download(res.url)
+      this.download()
     }
   }
 
-  download(url) {
-    let self = this,
+  listenInput() {
+    readline.emitKeypressEvents(process.stdin)
+    process.stdin.setRawMode(true)
+    process.stdin.on('keypress', (str, key) => {
+      str = str.toLowerCase()
+      if (str === 'y') {
+        this.download()
+      } else if (str === 'd'){
+        this.dir = desktop
+        this.download()
+      } else if (str === 'r'){
+        this.go()
+      } else if (str === 'n') {
+        process.exit()
+      } else {
+        feconsole.log('notice: press key y | d | r | n')
+      }
+    })
+
+    this.listenFlag = true
+  }
+
+  download() {
+    let url = this.imgInfo.url,
+        self = this,
         saveto = path.join(self.dir, self.name)
 
     request(url)
@@ -110,10 +124,6 @@ class FreePic {
 var freepic = new FreePic()
 
 freepic.go()
-
-// 有必要做缓存
-// freepic.testDown('https://images.unsplash.com/photo-1474917299080-1371d7175b62?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=6b0495d1637473ad897fadd75cb91040')
-
 
 
 
