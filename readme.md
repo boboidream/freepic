@@ -50,7 +50,7 @@
     freepic -p
     ```
 
-    ![preview](http://7xsmek.com1.z0.glb.clouddn.com/github/freepic-preview.jpg)
+    ![preview](http://7xsmek.com1.z0.glb.clouddn.com/github/img/freepic-preview.jpg)
 
 ## 参数说明
 
