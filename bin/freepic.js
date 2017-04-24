@@ -35,7 +35,8 @@ class FreePic {
       height: argv.height,
       about: argv.about
     }
-    this.listenFlag = false
+    this.listenFlag = false // prevent bind process.stdin event mutiple
+    this.preventPress = false // prevent click mutiple
     this.imgInfo = null
   }
 
@@ -65,6 +66,7 @@ class FreePic {
           console.log('')
 
           if (!this.listenFlag) this.listenInput() // listen user input once
+          this.preventPress = false
         })
         .catch(err => {
           console.log('| notice: preview need iTerm2 version >= 3')
@@ -79,6 +81,8 @@ class FreePic {
     readline.emitKeypressEvents(process.stdin)
     process.stdin.setRawMode(true)
     process.stdin.on('keypress', (str, key) => {
+      if (this.preventPress) return
+
       str = str.toLowerCase()
       if (str === 'y') {
         this.download()
@@ -87,6 +91,7 @@ class FreePic {
         this.download()
       } else if (str === 'r'){
         this.go()
+        this.preventPress = true
       } else if (str === 'n') {
         process.exit()
       } else {
@@ -101,7 +106,8 @@ class FreePic {
     let url = this.imgInfo.url,
         self = this,
         saveto = path.join(self.dir, self.name)
-
+    
+    this.preventPress = true
     request(url)
       .on('response', (response) => {
         console.log(`| save to: ${saveto}`)

@@ -45,6 +45,12 @@
     ```bash
     freepic -d
     ```
+4. 命令行中预览图片，并可再次获取一张图片（需在 iTerm2 中运行）
+    ```bash
+    freepic -p
+    ```
+
+    ![preview](./img/preview.png)
 
 ## 参数说明
 
@@ -79,3 +85,9 @@
 如果喜欢这个项目，别忘点 ⭐ 支持一下哦！ [freePic](https://github.com/boboidream/freepic)
 
 有问题，可以点击反馈：[问题反馈](https://github.com/boboidream/freepic/issues)
+
+
+```
+2017.04.24 | add preview feature
+2017.04.22 | publish 0.0.1
+```

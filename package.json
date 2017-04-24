@@ -1,6 +1,6 @@
 {
   "name": "freepic",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A lightweight tool to get free beautiful pictures.",
   "bin": {
     "freepic": "bin/freepic.js"
