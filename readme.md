@@ -89,6 +89,7 @@
 
 
 ```
+2017.10.19 | change stocksnap prefix & add debug mode
 2017.04.24 | add preview feature
 2017.04.22 | publish 0.0.1
 ```
