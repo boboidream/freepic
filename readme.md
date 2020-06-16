@@ -4,7 +4,7 @@
 
 ## 说明
 [![Support Node of LTS](https://img.shields.io/badge/node-LTS-brightgreen.svg)](https://nodejs.org/)
-[![npm version](https://img.shields.io/badge/npm-v0.0.5-orange.svg)](https://www.npmjs.com/package/freepic)
+[![npm version](https://img.shields.io/badge/npm-v0.0.6-orange.svg)](https://www.npmjs.com/package/freepic)
 
 轻松获取美图。
 
@@ -89,6 +89,7 @@
 
 
 ```
+2017.10.19 | change stocksnap prefix & add debug mode
 2017.04.24 | add preview feature
 2017.04.22 | publish 0.0.1
 ```

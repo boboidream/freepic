@@ -69,6 +69,7 @@ class FreePic {
           this.preventPress = false
         })
         .catch(err => {
+          if (argv.debug) console.log(err)
           console.log('| notice: preview need iTerm2 version >= 3')
           this.download()
         })
