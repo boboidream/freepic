@@ -203,6 +203,16 @@ form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
+freepic@^0.0.5:
+  version "0.0.5"
+  resolved "http://registry.npm.taobao.org/freepic/download/freepic-0.0.5.tgz#6dcd3a8bf68a72ad7b99866739817969fc24b294"
+  dependencies:
+    commander "^2.9.0"
+    imgcat "^2.3.0"
+    lodash "^4.17.4"
+    request "^2.81.0"
+    term-img "^1.0.0"
+
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/get-stdin/download/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
